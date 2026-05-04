@@ -531,53 +531,6 @@
       background: var(--accent); flex-shrink: 0;
     }
 
-    /* ─── TESTIMONIALS ────────────────────────────────────────────────── */
-    .testimonials {
-      padding: 140px 5vw;
-    }
-    .testimonials-header {
-      text-align: center; margin-bottom: 80px;
-    }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px; max-width: 1100px; margin: 0 auto;
-    }
-    .testimonial-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 40px;
-      transition: all 0.4s var(--ease-expo);
-    }
-    .testimonial-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-    .testimonial-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-style: italic; font-weight: 300;
-      color: var(--text-primary); line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: 14px;
-    }
-    .testimonial-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--tag-bg);
-      border: 1px solid var(--border-hover);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem; color: var(--accent);
-      flex-shrink: 0;
-    }
-    .testimonial-name {
-      font-size: 0.85rem; font-weight: 500; color: var(--text-primary);
-    }
-    .testimonial-role {
-      font-size: 0.75rem; font-weight: 300; color: var(--text-muted);
-    }
-
     /* ─── CTA ─────────────────────────────────────────────────────────── */
     .cta {
       padding: 160px 5vw;
@@ -736,7 +689,6 @@
       .features-grid { grid-template-columns: 1fr; }
       .download-inner { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: 1fr; }
       .footer-top { flex-direction: column; }
       .footer-links { gap: 36px; }
     }
@@ -764,8 +716,6 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#download">Download</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -782,8 +732,6 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#features" onclick="closeMobileMenu()">Features</a>
     <a href="#download" onclick="closeMobileMenu()">Download</a>
-    <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
-    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   </div>
 
   <!-- HERO -->
@@ -949,7 +897,8 @@
           <div class="download-meta-item">Platform <span>Android 8+</span></div>
           <div class="download-meta-item">Size <span>~28 MB</span></div>
         </div>
-        <a href="#" class="btn-download">
+        <!-- TODO: Replace YOUR_APK_LINK_HERE with the actual APK download URL -->
+        <a href="YOUR_APK_LINK_HERE" class="btn-download">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download APK
         </a>
@@ -971,7 +920,7 @@
           <div class="download-meta-item">Platform <span>Windows 10/11</span></div>
           <div class="download-meta-item">Size <span>~64 MB</span></div>
         </div>
-        <a href="#" class="btn-download">
+        <a href="https://github.com/Elvryn-sas/app_updates/releases/download/v1.0.3/school_setup_v1.0.3.exe" class="btn-download">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download EXE
         </a>
@@ -982,48 +931,8 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="testimonials-header">
-      <div class="section-label reveal" style="justify-content:center;">Users</div>
-      <h2 class="section-title reveal reveal-delay-1">Trusted by people<br />who value their <em>time</em></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <p class="testimonial-quote">"Elvryn replaced three tools in my stack. The sync between my phone and PC is flawless — I never think about it, it just works."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">A</div>
-          <div>
-            <div class="testimonial-name">Ahmed Khalid</div>
-            <div class="testimonial-role">Product Lead, Lahore</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-1">
-        <p class="testimonial-quote">"The desktop app is genuinely fast. No Electron bloat, no lag. It feels like software should have always felt."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">S</div>
-          <div>
-            <div class="testimonial-name">Sara M.</div>
-            <div class="testimonial-role">Freelance Developer</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <p class="testimonial-quote">"I was skeptical but the offline mode alone made it worth it. My workflow does not stop just because the internet does."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">R</div>
-          <div>
-            <div class="testimonial-name">Rayan Bashir</div>
-            <div class="testimonial-role">Creative Director</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
-  <section class="cta" id="contact">
+  <section class="cta">
     <div class="cta-inner">
       <div class="cta-eyebrow reveal">Get Started Today</div>
       <h2 class="cta-title reveal reveal-delay-1">Your workflow,<br /><em>refined.</em></h2>
@@ -1031,7 +940,7 @@
         Download Elvryn for free and experience the difference that precision engineering makes. No subscription required to get started.
       </p>
       <div class="hero-actions reveal reveal-delay-3">
-        <a href="#download" class="btn-primary">
+        <a href="https://github.com/Elvryn-sas/app_updates/releases/download/v1.0.3/school_setup_v1.0.3.exe" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Now — Free
         </a>
@@ -1056,8 +965,8 @@
           <h4>Product</h4>
           <ul>
             <li><a href="#features">Features</a></li>
-            <li><a href="#download">Download APK</a></li>
-            <li><a href="#download">Download EXE</a></li>
+            <li><a href="YOUR_APK_LINK_HERE">Download APK</a></li>
+            <li><a href="https://github.com/Elvryn-sas/app_updates/releases/download/v1.0.3/school_setup_v1.0.3.exe">Download EXE</a></li>
             <li><a href="#">Changelog</a></li>
           </ul>
         </div>
