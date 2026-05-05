@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ─── TOKENS ─────────────────────────────────────────────────────── */
     :root {
       --ease-expo: cubic-bezier(0.16,1,0.3,1);
       --ease-back: cubic-bezier(0.34,1.56,0.64,1);
@@ -59,7 +58,6 @@
       --noise-opacity: 0.04;
     }
 
-    /* ─── RESET ──────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
@@ -74,7 +72,6 @@
     img { display: block; max-width: 100%; }
     button { font-family: inherit; border: none; cursor: pointer; background: none; }
 
-    /* ─── NOISE OVERLAY ──────────────────────────────────────────────── */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -84,7 +81,6 @@
       background-size: 128px;
     }
 
-    /* ─── GRID BACKGROUND ────────────────────────────────────────────── */
     .grid-bg {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-image:
@@ -93,7 +89,6 @@
       background-size: 60px 60px;
     }
 
-    /* ─── NAV ─────────────────────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -136,7 +131,6 @@
       display: flex; align-items: center; gap: 16px;
     }
 
-    /* Theme toggle */
     .theme-toggle {
       width: 44px; height: 24px;
       border-radius: var(--radius-pill);
@@ -181,7 +175,6 @@
       transition: all 0.3s;
     }
 
-    /* ─── HERO ────────────────────────────────────────────────────────── */
     .hero {
       position: relative; z-index: 1;
       min-height: 100vh;
@@ -192,7 +185,6 @@
       overflow: hidden;
     }
 
-    /* Radial glow */
     .hero::after {
       content: '';
       position: absolute;
@@ -303,7 +295,6 @@
       animation: scrollLine 2s ease-in-out infinite;
     }
 
-    /* ─── SECTION COMMON ──────────────────────────────────────────────── */
     section { position: relative; z-index: 1; }
 
     .section-label {
@@ -332,7 +323,6 @@
       max-width: 520px;
     }
 
-    /* ─── FEATURES ────────────────────────────────────────────────────── */
     .features {
       padding: 120px 5vw;
       background: var(--bg-surface);
@@ -392,7 +382,7 @@
       color: var(--text-secondary); line-height: 1.7;
     }
 
-    /* ─── DOWNLOAD ────────────────────────────────────────────────────── */
+    /* ─── DOWNLOAD ─────────────────────────────────────────────────── */
     .download {
       padding: 140px 5vw;
     }
@@ -404,9 +394,12 @@
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 56px 52px;
+      /* FIX: min-height so icon never overlaps content */
+      padding: 56px 52px 56px 52px;
       position: relative; overflow: hidden;
       transition: all 0.4s var(--ease-expo);
+      /* ensure content has space above the bottom-right icon */
+      padding-bottom: 100px;
     }
     .download-card:hover {
       border-color: var(--accent);
@@ -462,50 +455,16 @@
     }
     .btn-download svg { width: 16px; height: 16px; }
 
+    /* FIX: icon sits in bottom-right corner, non-overlapping with content */
     .download-device-icon {
-      position: absolute; right: 40px; bottom: 40px;
+      position: absolute; right: 36px; bottom: 28px;
       opacity: 0.06; color: var(--text-primary);
       transition: opacity 0.4s;
+      pointer-events: none;
     }
     .download-card:hover .download-device-icon { opacity: 0.1; }
-    .download-device-icon svg { width: 120px; height: 120px; stroke-width: 0.8; }
+    .download-device-icon svg { width: 90px; height: 90px; stroke-width: 0.8; }
 
-    /* ─── STATS ───────────────────────────────────────────────────────── */
-    .stats {
-      padding: 100px 5vw;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-surface);
-      transition: background var(--transition), border-color var(--transition);
-    }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .stat-item {
-      background: var(--bg-surface);
-      padding: 52px 40px;
-      text-align: center;
-      transition: background 0.3s;
-    }
-    .stat-item:hover { background: var(--bg-elevated); }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 300;
-      color: var(--text-primary);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-num span { color: var(--accent); }
-    .stat-label {
-      font-size: 0.78rem; font-weight: 300;
-      color: var(--text-secondary); letter-spacing: 0.08em;
-    }
-
-    /* ─── MARQUEE ─────────────────────────────────────────────────────── */
     .marquee-section {
       padding: 48px 0;
       border-top: 1px solid var(--border);
@@ -531,7 +490,6 @@
       background: var(--accent); flex-shrink: 0;
     }
 
-    /* ─── CTA ─────────────────────────────────────────────────────────── */
     .cta {
       padding: 160px 5vw;
       background: var(--bg-surface);
@@ -568,7 +526,6 @@
       max-width: 480px; margin: 0 auto 48px;
     }
 
-    /* ─── FOOTER ──────────────────────────────────────────────────────── */
     footer {
       padding: 60px 5vw 40px;
       border-top: 1px solid var(--border);
@@ -629,7 +586,6 @@
       letter-spacing: 0.1em;
     }
 
-    /* ─── ANIMATIONS ──────────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -648,7 +604,6 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
     .reveal {
       opacity: 0; transform: translateY(40px);
       transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo);
@@ -661,7 +616,6 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ─── MOBILE NAV ──────────────────────────────────────────────────── */
     .mobile-menu {
       display: none;
       position: fixed; top: 72px; left: 0; right: 0;
@@ -680,7 +634,6 @@
     }
     .mobile-menu a:hover { color: var(--text-primary); }
 
-    /* ─── RESPONSIVE ──────────────────────────────────────────────────── */
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .btn-nav { display: none; }
@@ -688,7 +641,6 @@
       .features-header { grid-template-columns: 1fr; gap: 24px; }
       .features-grid { grid-template-columns: 1fr; }
       .download-inner { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { flex-direction: column; }
       .footer-links { gap: 36px; }
     }
@@ -697,14 +649,107 @@
       .hero-title { font-size: 2.8rem; }
       .hero-actions { flex-direction: column; width: 100%; }
       .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .download-card { padding: 40px 32px; }
+      .download-card { padding: 40px 32px 90px; }
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────────────────── */
+    .contact {
+      padding: 140px 5vw;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .contact-header {
+      text-align: center; margin-bottom: 72px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px;
+      display: flex; flex-direction: column;
+      align-items: flex-start;
+      position: relative; overflow: hidden;
+      transition: all 0.4s var(--ease-expo);
+      text-decoration: none;
+    }
+    .contact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+    .contact-card-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 80% 0%, var(--accent-glow), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .contact-card:hover .contact-card-bg { opacity: 1; }
+    .contact-card-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--tag-bg);
+      border: 1px solid var(--border-hover);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      color: var(--accent);
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .contact-card-icon svg { width: 22px; height: 22px; }
+    .contact-card-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .contact-card-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 400;
+      color: var(--text-primary); margin-bottom: 8px;
+      position: relative; z-index: 1;
+      line-height: 1.2;
+    }
+    .contact-card-value {
+      font-size: 0.82rem; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.5;
+      position: relative; z-index: 1;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .contact-card-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      position: relative; z-index: 1;
+      transition: gap 0.25s var(--ease-expo);
+    }
+    .contact-card:hover .contact-card-cta { gap: 12px; }
+    .contact-card-cta svg { width: 14px; height: 14px; }
+
+    /* WhatsApp green accent on WA cards */
+    .contact-card.wa:hover { border-color: #25D366; }
+    .contact-card.wa .contact-card-bg {
+      background: radial-gradient(ellipse at 80% 0%, rgba(37,211,102,0.1), transparent 60%);
+    }
+    .contact-card.wa .contact-card-icon { color: #25D366; background: rgba(37,211,102,0.08); border-color: rgba(37,211,102,0.2); }
+    .contact-card.wa .contact-card-type { color: #25D366; }
+    .contact-card.wa .contact-card-cta { color: #25D366; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Grid Background -->
   <div class="grid-bg"></div>
 
   <!-- NAV -->
@@ -716,6 +761,7 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#download">Download</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -728,10 +774,10 @@
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#features" onclick="closeMobileMenu()">Features</a>
     <a href="#download" onclick="closeMobileMenu()">Download</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   </div>
 
   <!-- HERO -->
@@ -845,28 +891,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-num">50<span>K+</span></div>
-        <div class="stat-label">Active Users</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-num">99.<span>9%</span></div>
-        <div class="stat-label">Uptime SLA</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Platforms Supported</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-num">4.<span>9</span></div>
-        <div class="stat-label">Average Rating</div>
-      </div>
-    </div>
-  </section>
-
   <!-- DOWNLOAD -->
   <section class="download" id="download">
     <div style="text-align:center; margin-bottom:72px;">
@@ -897,7 +921,6 @@
           <div class="download-meta-item">Platform <span>Android 8+</span></div>
           <div class="download-meta-item">Size <span>~28 MB</span></div>
         </div>
-        <!-- TODO: Replace YOUR_APK_LINK_HERE with the actual APK download URL -->
         <a href="https://github.com/Elvryn-sas/app_update_teacher/releases/download/v1.0.0/Teacher-v1.0.0.apk" class="btn-download">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download APK
@@ -948,6 +971,82 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-header">
+        <div class="section-label reveal" style="justify-content:center;">
+          <span style="display:inline-flex;align-items:center;gap:12px;">
+            <span style="display:block;width:32px;height:1px;background:var(--accent);"></span>
+            Get in Touch
+          </span>
+        </div>
+        <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:16px;">
+          We're here<br />whenever you <em>need us.</em>
+        </h2>
+        <p class="section-sub reveal reveal-delay-2" style="margin:0 auto;">
+          Reach out via WhatsApp for a quick response, or drop us an email — we'll get back to you as soon as possible.
+        </p>
+      </div>
+      <div class="contact-grid">
+
+        <!-- WhatsApp 1 -->
+        <a class="contact-card wa reveal" href="https://wa.me/923039056328" target="_blank" rel="noopener">
+          <div class="contact-card-bg"></div>
+          <div class="contact-card-icon">
+            <!-- WhatsApp icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="contact-card-type">WhatsApp · Line 1</div>
+          <div class="contact-card-label">Support</div>
+          <div class="contact-card-value">+92 303 905 6328<br />Available for quick questions,<br />onboarding help &amp; general support.</div>
+          <div class="contact-card-cta">
+            Message on WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </a>
+
+        <!-- WhatsApp 2 -->
+        <a class="contact-card wa reveal reveal-delay-1" href="https://wa.me/923345687410" target="_blank" rel="noopener">
+          <div class="contact-card-bg"></div>
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="contact-card-type">WhatsApp · Line 2</div>
+          <div class="contact-card-label">Sales</div>
+          <div class="contact-card-value">+92 334 568 7410<br />For enterprise enquiries,<br />partnership &amp; licensing discussions.</div>
+          <div class="contact-card-cta">
+            Message on WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a class="contact-card reveal reveal-delay-2" href="mailto:elvryn.code@gmail.com">
+          <div class="contact-card-bg"></div>
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-card-type">Email</div>
+          <div class="contact-card-label">Write to Us</div>
+          <div class="contact-card-value">elvryn.code@gmail.com<br />For detailed queries, bug reports,<br />or anything that needs a paper trail.</div>
+          <div class="contact-card-cta">
+            Send an Email
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
@@ -967,24 +1066,7 @@
             <li><a href="#features">Features</a></li>
             <li><a href="https://github.com/Elvryn-sas/app_update_teacher/releases/download/v1.0.0/Teacher-v1.0.0.apk">Download APK</a></li>
             <li><a href="https://github.com/Elvryn-sas/app_updates/releases/download/v1.0.3/school_setup_v1.0.3.exe">Download EXE</a></li>
-            <li><a href="#">Changelog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">License</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -996,7 +1078,6 @@
   </footer>
 
   <script>
-    /* ─── THEME TOGGLE ─────────────────────────────────────────────────── */
     const html = document.documentElement;
     const toggle = document.getElementById('themeToggle');
     const saved = localStorage.getItem('elvryn-theme') || 'dark';
@@ -1008,7 +1089,6 @@
       localStorage.setItem('elvryn-theme', next);
     });
 
-    /* ─── HAMBURGER ────────────────────────────────────────────────────── */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => {
@@ -1016,7 +1096,6 @@
     });
     function closeMobileMenu() { mobileMenu.classList.remove('open'); }
 
-    /* ─── SCROLL REVEAL ────────────────────────────────────────────────── */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1028,7 +1107,6 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    /* ─── NAV ACTIVE ON SCROLL ─────────────────────────────────────────── */
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
